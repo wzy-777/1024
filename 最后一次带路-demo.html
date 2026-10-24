@@ -789,6 +789,12 @@
 
   document.getElementById("startBtn").addEventListener("click", function(){
     titleOv.classList.add("hidden");
+    var m = /[?&]round=(\d+)/.exec(location.search);
+    if (m){
+      idx = Math.max(0, Math.min(parseInt(m[1], 10) - 1, ROUNDS.length - 1));
+      waterY = Math.max(250, 640 - idx * 26);
+      applyWater();
+    }
     startRound();
   });
 
